@@ -1,1 +1,0 @@
-# improved_django_project
