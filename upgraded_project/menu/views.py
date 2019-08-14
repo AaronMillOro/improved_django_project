@@ -1,33 +1,30 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.http import Http404
-from django.utils import timezone
-from operator import attrgetter
-from datetime import datetime
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
+from django.db.models import Q
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
+from datetime import datetime
+
 from menu.models import *
 from menu.forms import *
 
 
 def menu_list(request):
-    all_menus = Menu.objects.all()
-    menus = []
-    for menu in all_menus:
-        #if menu.expiration_date >= timezone.now():
-        menus.append(menu)
-
-    #menus = sorted(menus, key=attrgetter('expiration_date'))
-    return render(request, 'menu/list_all_current_menus.html', {'menus': menus})
-
+    """Display menus with a valid expiration date and ordered by season name"""
+    menus = Menu.objects.only('season').filter(
+        Q(expiration_date__gte=timezone.now())|
+        Q(expiration_date__isnull=True)).order_by('season')
+    return render(request, 'menu/list_all_current_menus.html', {'menus':menus})
 
 def menu_detail(request, pk):
+    """ Displays the elements of the selected menu, if is the case it includes
+    expiration date """
     menu = Menu.objects.get(pk=pk)
     return render(request, 'menu/menu_detail.html', {'menu': menu})
 
 def item_detail(request, pk):
-    try:
-        item = Item.objects.get(pk=pk)
-    except ObjectDoesNotExist:
-        raise Http404
+    """ Displays the ingredients for the selected element of a given menu """
+    item = get_object_or_404(Item, pk=pk)
     return render(request, 'menu/detail_item.html', {'item': item})
 
 def create_new_menu(request):
