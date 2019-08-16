@@ -16,16 +16,19 @@ def menu_list(request):
         Q(expiration_date__isnull=True)).order_by('season')
     return render(request, 'menu/list_all_current_menus.html', {'menus':menus})
 
+
 def menu_detail(request, pk):
     """ Displays the elements of the selected menu, if is the case it includes
     expiration date """
     menu = Menu.objects.get(pk=pk)
     return render(request, 'menu/menu_detail.html', {'menu': menu})
 
+
 def item_detail(request, pk):
     """ Displays the ingredients for the selected element of a given menu """
     item = get_object_or_404(Item, pk=pk)
     return render(request, 'menu/detail_item.html', {'item': item})
+
 
 def create_new_menu(request):
     if request.method == "POST":
@@ -39,6 +42,7 @@ def create_new_menu(request):
         form = MenuForm()
     return render(request, 'menu/menu_edit.html', {'form': form})
 
+
 def edit_menu(request, pk):
     menu = get_object_or_404(Menu, pk=pk)
     items = Item.objects.all()
@@ -51,4 +55,13 @@ def edit_menu(request, pk):
     return render(request, 'menu/change_menu.html', {
         'menu': menu,
         'items': items,
+        })
+
+def edit_item(request, pk):
+    item = get_object_or_404(Item, pk=pk)
+    ingredients = Ingredient.objects.all()
+
+    return render(request, 'menu/item_edit.html', {
+        'ingredients': ingredients,
+        'item': item,
         })

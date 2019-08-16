@@ -12,13 +12,13 @@
                 {% endif %}
 
                 {% for menu in menus %}
-                    <h1>
+                    <h2>
                         {% if user.is_authenticated %}
                             <a class="btn btn-default" href="{% url 'menu_edit' pk=menu.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
                         {% endif %}
                         <a href="{% url 'menu_detail' pk=menu.pk %}">{{ menu.season }}</a>
-                    </h1>
-                    <p>{{ menu.items.all|join:", "}}</p>
+                    </h2>
+                    <p>Menu: {{ menu.items.all|join:", "}}</p>
                 {% endfor %}
             </div>
         </div>
