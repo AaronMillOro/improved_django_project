@@ -9,9 +9,9 @@
                     {% if user.is_authenticated %}
                         <a class="btn btn-default" href="{% url 'menu_edit' pk=menu.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
                     {% endif %}
-                    Name of menu: <strong>{{ menu.season }}</strong>
+                    Season: <strong>{{ menu.season }}</strong>
                 </h1>
-                <h2>On the menu this season:</h2>
+                <h2>Available menu: </h2>
                 <ul>
                     {% for item in menu.items.all %}
                         <li><a href="{% url 'item_detail' pk=item.pk %}">{{ item }}</a></li>

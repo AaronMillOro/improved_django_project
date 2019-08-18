@@ -1,7 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms.extras.widgets import SelectDateWidget
-from datetime import datetime
 
 from .models import *
 
@@ -20,10 +19,14 @@ class MenuForm(forms.ModelForm):
             'expiration_date',
             )
 
-    #def clean_season(self):
-    #    season = self.clean_data.get('season')
-    #    if len(season) < 5:
-    #        raise ValidationError('SEASON name must have at least 5 characters')
-        #elif len(items) < 1:
-        #    raise ValidationError('Select at least 1 ITEM')
-    #    return season
+    def clean_season_name(self):
+        season = self.cleaned_data.get('season')
+        if len(season) < 5:
+            raise ValidationError('SEASON must have at least 5 characters')
+        return season
+
+    def clean_items(self):
+        items = self.cleaned_data.get('items')
+        if len(items) < 2:
+            raise ValidationError('Select at least 2 ITEMS')
+        return items
