@@ -5,13 +5,10 @@
     <div class="row">
         <div class="col-md-8">
             <div class="post">
-                {% if user.is_authenticated %}
-                	<a class="btn btn-default" href="{% url 'item_edit' pk=item.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-                {% endif %}
-                <h1>{{ item.name }}</h1>
+                <h1>{{ item.name }}</h1><br>
                 <p><strong>Head Chef:</strong> {{ item.chef }}</p>
-                <p>{{ item.description }}</p>
-                <p><strong>Ingredients: </strong>{{ item.ingredients.all|join:", " }}</p>
+                <p>{{ item.description }}</p><br><br>
+                <p><strong>Ingredients: </strong>{{ item.ingredients.all|join:", " }}</p><br><br>
                 {% if item.standard %}
                     <p><em>This item is available year-round.</em></p>
                 {% endif %}

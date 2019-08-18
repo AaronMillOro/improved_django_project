@@ -10,7 +10,7 @@
                         Expires on: {{ menu.expiration_date }}
                     </div>
                 {% endif %}
-
+                <h1>Available menus: </h1><br>
                 {% for menu in menus %}
                     <h2>
                         {% if user.is_authenticated %}
@@ -18,7 +18,7 @@
                         {% endif %}
                         <a href="{% url 'menu_detail' pk=menu.pk %}">{{ menu.season }}</a>
                     </h2>
-                    <p>Menu: {{ menu.items.all|join:", "}}</p>
+                    <p>{{ menu.items.all|join:", "}}</p>
                 {% endfor %}
             </div>
         </div>
