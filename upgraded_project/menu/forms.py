@@ -19,7 +19,7 @@ class MenuForm(forms.ModelForm):
             'expiration_date',
             )
 
-    def clean_season_name(self):
+    def clean_season(self):
         season = self.cleaned_data.get('season')
         if len(season) < 5:
             raise ValidationError('SEASON must have at least 5 characters')
