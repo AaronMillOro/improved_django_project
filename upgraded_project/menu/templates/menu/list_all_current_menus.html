@@ -18,7 +18,6 @@
                         {% endif %}
                         <a href="{% url 'menu_detail' pk=menu.pk %}">{{ menu.season }}</a>
                     </h2>
-                    <p>{{ menu.items.all|join:", "}}</p>
                 {% endfor %}
             </div>
         </div>
