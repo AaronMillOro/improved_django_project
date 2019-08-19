@@ -1,6 +1,6 @@
 # Improve a Django project
 
-##Context of the project
+## Context 
 The provided data was part of a weekend hackathon that took place a year ago or more. Certainly, the project runs kind of slow and is hard to follow. The aim was to go through the project, find where it's inefficient, and fix it. 
 
 * The provided **requirements.txt** file was used as a reference to install needed packages for the project.
