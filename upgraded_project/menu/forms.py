@@ -4,6 +4,7 @@ from django.forms.extras.widgets import SelectDateWidget
 
 from .models import *
 
+
 class MenuForm(forms.ModelForm):
     """ Extended form to change menu options """
     expiration_date = forms.DateField(
@@ -13,11 +14,7 @@ class MenuForm(forms.ModelForm):
     class Meta:
         model = Menu
         exclude = ('created_date',)
-        fields = (
-            'season',
-            'items',
-            'expiration_date',
-            )
+        fields = ('season', 'items', 'expiration_date',)
 
     def clean_season(self):
         season = self.cleaned_data.get('season')

@@ -16,9 +16,9 @@ The provided data was part of a weekend hackathon that took place a year ago or 
 * Unit test were writen. By using the line code **"coverage report"** the overall coverage test is above 75%.
 
 ## Test the app on terminal
-After inpecting the files, the project seems to be a restaurant/bar that displays the different **season's menus**. If the user is authenticated, the user can modify or add new menus with different items.
+After inspecting the files, the project is a sort of restaurant/bar named **Soda Fountain** that displays the different **season's menus**. If the user is authenticated, the user can modify or add new menus with different items.
 
-1. Set the root repository and install the requirements.
+1. Set the root repository (upgraded_project) and install the requirements.
 
 		 pipenv install
 		 pipenv shell
@@ -33,14 +33,14 @@ After inpecting the files, the project seems to be a restaurant/bar that display
 
 		http://localhost:5000/
 
-4. To login, you can type:
+4. To login, you can type the following URL and credentials:
 		
 		http://localhost:5000/admin		
 		
 		 User: aaron
 		 Password: SuperPass
 		 
-5. Then select **'view website'**.
+5. Then, to the upper left corner select **View website**.
 
 
 Enjoy! :shipit:
